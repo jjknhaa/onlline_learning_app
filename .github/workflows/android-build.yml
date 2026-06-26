@@ -1,7 +1,7 @@
 name: Build Android APK
 on:
   push:
-    branches: [ main, master ] # Triggers whenever you push code
+    branches: [ main, master ]
 
 jobs:
   build:
@@ -10,11 +10,27 @@ jobs:
       - name: Checkout Source Code
         uses: actions/checkout@v4
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 10
+
+      - name: Install Project Dependencies
+        run: pnpm install --no-frozen-lockfile
+
       - name: Set up Java Runtime
         uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
           java-version: '17'
+
+      - name: Sync Capacitor Assets
+        run: npx cap sync android
 
       - name: Make Gradle Executable
         run: chmod +x android/gradlew
