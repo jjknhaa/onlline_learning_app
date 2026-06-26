@@ -3,7 +3,7 @@
   "appName": "online-learning-platform",
   "webDir": "public",
   "server": {
-    "url": "http://10.0.2.2:3000",
+    "url": "http://10.99.50.65:3000",
     "cleartext": true
   }
 }
