@@ -1,0 +1,31 @@
+name: Build Android APK
+on:
+  push:
+    branches: [ main, master ] # Triggers whenever you push code
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Set up Java Runtime
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Make Gradle Executable
+        run: chmod +x android/gradlew
+
+      - name: Compile Debug APK
+        run: |
+          cd android
+          ./gradlew assembleDebug
+
+      - name: Upload Finished APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-debug
+          path: android/app/build/outputs/apk/debug/app-debug.apk
