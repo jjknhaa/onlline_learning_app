@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
- // output: 'export', // Tells Next.js to generate static files into the 'out' folder
+  // output: 'export', 
   images: {
-    unoptimized: true, // Required for static exports & mobile wrappers
+    unoptimized: true, 
     remotePatterns: [
       {
         protocol: 'https',

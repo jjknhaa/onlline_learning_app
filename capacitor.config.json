@@ -3,7 +3,7 @@
   "appName": "online-learning-platform",
   "webDir": "public",
   "server": {
-    "url": "http://10.99.50.65:3000",
+    "url": "https://online-learning-mjlq.vercel.app",
     "cleartext": true
   }
 }
